@@ -258,7 +258,8 @@ async def process_step_4(ctx_api, user_id: int, peer_id: int):
         await send_message(ctx_api, peer_id, text1, keyboard=get_persistent_keyboard(True),
                            attachment=attachment)
     else:
-        await send_message(ctx_api, peer_id, text1 + "\n\nhttps://disk.yandex.ru/i/BrsJSevE_AsnFA", keyboard=get_persistent_keyboard())
+        await send_message(ctx_api, peer_id, text1 +
+                           "\n\nhttps://disk.yandex.ru/i/BrsJSevE_AsnFA", keyboard=get_persistent_keyboard(True))
 
     await send_message(ctx_api, peer_id, "С какой темой вы хотели бы разобраться?", keyboard=get_topics_keyboard())
 
@@ -279,12 +280,17 @@ async def process_topic(ctx_api, user_id: int, peer_id: int, topic: str, event_i
 
     user = get_user(user_id)
     if user and user["topic"] is not None:
-        await send_message(ctx_api, peer_id, "Вы уже выбрали тему ранее. Мы учтём это в работе!", keyboard=get_persistent_keyboard())
+        await send_message(ctx_api, peer_id, "Вы уже выбрали тему ранее. Мы учтём это в работе!",
+                           keyboard=get_persistent_keyboard())
         return
 
     set_topic(user_id, topic)
     set_step(user_id, 3) # Регистрация завершена
-
+    first_name = user["first_name"] if user["first_name"] else "Пользователь"
+    await send_message(
+        ctx_api, peer_id,
+        f"{first_name}, выбрали тему. Мы учтём это в работе!\n\n"
+    )
     first_name = user["first_name"] if user and user["first_name"] else "Пользователь"
 
     # 2. Логирование
@@ -421,7 +427,7 @@ async def fallback_handler(message: Message):
         first_name = user["first_name"] if user["first_name"] else "Пользователь"
         await send_message(
             message.ctx_api, message.peer_id,
-            f"{first_name}, выбрали тему. Мы учтём это в работе!\n\n",
+            f"{first_name}, выбрали тему. Мы учтём это в работе!\n\n"
         )
 
 
