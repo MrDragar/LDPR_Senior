@@ -9,7 +9,7 @@ services:
       - .env
     volumes:
       - ./bot.db:/app/bot.db
-      - ./pamphlet.pdf:/app/pamphlet.pdf  # Положите ваш PDF в эту папку на хосте
+      - ./Пенсионеры_ЛДПР.pdf:/app/Пенсионеры_ЛДПР.pdf  # Положите ваш PDF в эту папку на хосте
     networks:
       - bot_network
 

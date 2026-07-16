@@ -255,7 +255,7 @@ async def process_step_4(ctx_api, user_id: int, peer_id: int):
         await send_message(ctx_api, peer_id, text1, keyboard=get_persistent_keyboard(True),
                            attachment=attachment)
     else:
-        await send_message(ctx_api, peer_id, text1 + "\n\n(Файл временно недоступен, обратитесь к администратору)", keyboard=get_persistent_keyboard())
+        await send_message(ctx_api, peer_id, text1 + "\n\nhttps://disk.yandex.ru/i/BrsJSevE_AsnFA", keyboard=get_persistent_keyboard())
 
     await send_message(ctx_api, peer_id, "С какой темой вы хотели бы разобраться?", keyboard=get_topics_keyboard())
 
@@ -266,7 +266,9 @@ async def process_get_pdf(ctx_api, user_id: int, peer_id: int, event_id: int):
     if attachment:
         await send_message(ctx_api, peer_id, "📘 Ваша памятка:", attachment=attachment)
     else:
-        await send_message(ctx_api, peer_id, "Файл временно недоступен, обратитесь к администратору.")
+        await send_message(
+            ctx_api, peer_id, "📘 Ваша памятка:\nhttps://disk.yandex.ru/i/BrsJSevE_AsnFA"
+        )
 
 
 async def process_topic(ctx_api, user_id: int, peer_id: int, topic: str, event_id: int):
