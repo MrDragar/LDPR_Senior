@@ -7,7 +7,7 @@ import json
 from dotenv import load_dotenv
 from openpyxl import Workbook
 
-from vkbottle import Bot, Keyboard, OpenLink, Callback, DocMessagesUploader
+from vkbottle import Bot, Keyboard, OpenLink, Callback, DocMessagesUploader, Bu
 from vkbottle.bot import Message
 from vkbottle_types import GroupEventType, GroupTypes
 
@@ -141,7 +141,9 @@ def get_topics_keyboard() -> Keyboard:
 
 def get_persistent_keyboard(first_time: bool = False) -> Keyboard:
     kb = Keyboard(one_time=False, inline=True)
-    kb.add(Callback("📥 СКАЧАТЬ ПАМЯТКУ", {"cmd": "get_pdf"}))
+    kb.add(OpenLink("https://comanda-products.hb.ru-msk.vkcloud-storage.ru/others/%D0%9F%D0%B5%D0"
+                    "%BD%D1%81%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B_%D0%9B%D0%94%D0%9F%D0%A0.pdf",
+                    "СКАЧАТЬ ПАМЯТКУ"))
     kb.row()
     if not first_time:
         kb.add(OpenLink("https://vk.me/join/1OduOEjaYgO4M1LNGDRALl/piNhVvRZQpdc=", "ВСТУПИТЬ В ЧАТ"))
@@ -416,11 +418,10 @@ async def fallback_handler(message: Message):
 
     elif user["step"] == 3:
         first_name = user["first_name"] if user["first_name"] else "Пользователь"
-        # await send_message(
-        #     message.ctx_api, message.peer_id,
-        #     f"{first_name}, вы уже успешно получили памятку и выбрали тему. Мы учтём это в работе!\n\nВы всегда можете скачать памятку заново или вступить в наш чат для обсуждения.",
-        #     keyboard=get_persistent_keyboard()
-        # )
+        await send_message(
+            message.ctx_api, message.peer_id,
+            f"{first_name}, выбрали тему. Мы учтём это в работе!\n\n",
+        )
 
 
 # ==================== ЗАПУСК ====================
