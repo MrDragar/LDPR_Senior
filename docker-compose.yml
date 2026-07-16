@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: ldkr_pension_bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./bot.db:/app/bot.db
+      - ./pamphlet.pdf:/app/pamphlet.pdf  # Положите ваш PDF в эту папку на хосте
+    networks:
+      - bot_network
+
+networks:
+  bot_network:
+    driver: bridge
