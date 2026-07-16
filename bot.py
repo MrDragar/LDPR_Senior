@@ -131,6 +131,12 @@ def get_topics_keyboard() -> Keyboard:
     ]
     for idx, topic in enumerate(topics):
         kb.add(Callback(topic, {"cmd": "topic", "topic": topic}))
+        if idx == 0:
+            kb.row()
+        if idx == 1:
+            continue
+        if idx == 2:
+            kb.row()
         if idx == 4:
             kb.row()
         if idx % 2 == 1:
