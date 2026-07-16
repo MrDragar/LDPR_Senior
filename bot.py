@@ -7,7 +7,7 @@ import json
 from dotenv import load_dotenv
 from openpyxl import Workbook
 
-from vkbottle import Bot, Keyboard, OpenLink, Callback, DocMessagesUploader, Bu
+from vkbottle import Bot, Keyboard, OpenLink, Callback, DocMessagesUploader
 from vkbottle.bot import Message
 from vkbottle_types import GroupEventType, GroupTypes
 
