@@ -141,9 +141,10 @@ def get_topics_keyboard() -> Keyboard:
 
 def get_persistent_keyboard(first_time: bool = False) -> Keyboard:
     kb = Keyboard(one_time=False, inline=True)
-    kb.add(OpenLink("https://comanda-products.hb.ru-msk.vkcloud-storage.ru/others/%D0%9F%D0%B5%D0"
-                    "%BD%D1%81%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B_%D0%9B%D0%94%D0%9F%D0%A0.pdf",
-                    "СКАЧАТЬ ПАМЯТКУ"))
+    kb.add(OpenLink(
+        "https://comanda-products.hb.ru-msk.vkcloud-storage.ru/others/Пенсионеры_ЛДПР.pdf",
+        "СКАЧАТЬ ПАМЯТКУ")
+    )
     kb.row()
     if not first_time:
         kb.add(OpenLink("https://vk.me/join/1OduOEjaYgO4M1LNGDRALl/piNhVvRZQpdc=", "ВСТУПИТЬ В ЧАТ"))
