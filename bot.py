@@ -142,7 +142,7 @@ def get_topics_keyboard() -> Keyboard:
 def get_persistent_keyboard(first_time: bool = False) -> Keyboard:
     kb = Keyboard(one_time=False, inline=True)
     kb.add(OpenLink(
-        "https://comanda-products.hb.ru-msk.vkcloud-storage.ru/others/Пенсионеры_ЛДПР.pdf",
+        "https://comanda-products.hb.ru-msk.vkcloud-storage.ru/others/LDPR.pdf",
         "СКАЧАТЬ ПАМЯТКУ")
     )
     kb.row()
