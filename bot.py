@@ -289,7 +289,7 @@ async def process_topic(ctx_api, user_id: int, peer_id: int, topic: str, event_i
     first_name = user["first_name"] if user["first_name"] else "Пользователь"
     await send_message(
         ctx_api, peer_id,
-        f"{first_name}, выбрали тему. Мы учтём это в работе!\n\n"
+        f'{first_name}, выбрали тему "{topic}". Мы учтём это в работе!\n\n'
     )
     first_name = user["first_name"] if user and user["first_name"] else "Пользователь"
 
